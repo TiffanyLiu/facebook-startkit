@@ -49,7 +49,7 @@
 		 fjs.parentNode.insertBefore(js, fjs);
 		 }(document, 'script', 'facebook-jssdk'));
 		</script>
-       
+       		<script>
 		function fblogin(){
 		//step2:https://developers.facebook.com/docs/graph-api/using-graph-api/v2.3	
 		Parse.FacebookUtils.logIn(null, {
@@ -59,7 +59,12 @@
  		} else {
  		alert("User logged in through Facebook!");
 		 }
-		 //等等要在這邊加程式碼 FB.getLoginStatus
+		  indexView(); //這是預先寫好的控制版面的function，not臉書api
+		 FB.getLoginStatus(function(response) {
+		 if (response.status === 'connected') {
+		 //等等要在這邊加程式碼 使用FB.api()
+		 }
+		 });
 		 },
 		 error: function(user, error) {
 		 alert("User cancelled the Facebook login or did not fully authorize.");
